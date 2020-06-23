@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+  {% if title %}
+    {{title}}
+  {% endif %}
+{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" >
+  {% csrf_token %}
+  <div class="flex 1 w-screen items-center justify-center bg-grey-lighter" style="margin-top: 100px;">
+      <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+          <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+          </svg>
+          <span class="mt-2 text-base leading-normal">Select Image</span>
+          <input id="file-upload" type='file' name="files" accept="image/*" class="hidden" />
+      </label>
+  </div>
+  <div class="flex 1 items-center justify-center bg-grey-lighter" style="margin-top: 20px;">
+  <h4 id="file-upload-filename" style="margin: 10px;"></h4>
+  <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+  Upload
+</button>
+</div>
+</form>
+<script>
+  var input = document.getElementById( 'file-upload' );
+  var infoArea = document.getElementById( 'file-upload-filename' );
+
+  var uploadField = document.getElementById("file-upload");
+
+  input.addEventListener( 'change', showFileName );
+
+  function showFileName( event ) {
+
+      // the change event gives us the input it occurred in
+      var input = event.srcElement;
+
+      // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+      var fileName = input.files[0].name;
+
+      // use fileName however fits your app best, i.e. add it into a div
+      infoArea.textContent = 'File name: ' + fileName;
+  }
+</script>
+{% endblock %}
+
