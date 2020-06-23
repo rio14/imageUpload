@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +24,7 @@ SECRET_KEY = 'p-lrwtswz4bo5jk6q+h2b2wy_3qg%0w8(vmd^buad#1qe1-4x)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['imageuploadassignment.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.43.19']
 
 
 # Application definition
@@ -128,12 +127,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'direcfiletransfer@gmail.com'
-EMAIL_HOST_PASSWORD = '226656s@'
-EMAIL_PORT = 587
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-django_heroku.settings(locals())
